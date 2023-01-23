@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level- [PID:%pid, Thread:%T] - %msg%n</pattern>
+            </PatternLayout>
+        </Console>
+
+        <File name="myFile" fileName="target/logs/testbed-app.log">
+            <PatternLayout>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level- [PID:%pid, Thread:%T] - %msg%n</pattern>
+            </PatternLayout>
+        </File>
+    </appenders>
+
+    <loggers>
+        <logger name="myLogger" level="debug">
+            <appender-ref ref="myFile"/>
+            <!--<appender-ref ref="Console"/>-->
+        </logger>
+        <logger name="org.springframework"
+                level="Error">
+            <appender-ref ref="Console"/>
+        </logger>
+        <root level="info">
+            <appender-ref ref="Console" />
+        </root>
+    </loggers>
+</configuration>
